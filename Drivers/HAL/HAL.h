@@ -1,9 +1,3 @@
-/*
- * HAL.h
- *
- *  Created on: Apr 19, 2019
- *      Author: curiosul
- */
 
 #ifndef _HAL_H_
 #define _HAL_H_
@@ -28,5 +22,6 @@ typedef enum
 #define Vfb_DigitalToggle(pin)			digitalWrite(pin, !digitalRead(pin) )
 #define Vfb_SetPinMode(pin, mode)		pinMode(pin, mode)
 #define Vfb_AnalogRead(pin)				analogRead(pin)
+#define Vfb_AnalogWrite(pin, value);	analogWrite(pin, value)
 
 #endif /* _HAL_H_ */

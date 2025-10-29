@@ -15,6 +15,38 @@
 
 namespace Drivers
 {
+
+	enum class SerialSpeed : uint32_t
+	{
+		// Very slow speeds (legacy/debugging)
+		BAUD_110    = 110,      // Teletype machines
+		BAUD_300    = 300,      // Very old modems
+		BAUD_600    = 600,      // Old acoustic couplers
+		BAUD_1200   = 1200,     // Early modems
+		BAUD_2400   = 2400,     // Vintage modems
+		BAUD_4800   = 4800,     // Legacy systems
+
+		// Standard low speeds
+		BAUD_9600   = 9600,     // Most common default, Arduino default
+		BAUD_14400  = 14400,    // Some modems
+		BAUD_19200  = 19200,    // Common for embedded systems
+		BAUD_28800  = 28800,    // Some applications
+		BAUD_38400  = 38400,    // Common for GPS modules
+
+		// Standard medium speeds
+		BAUD_57600  = 57600,    // Common for development
+		BAUD_76800  = 76800,    // Less common
+		BAUD_115200 = 115200,   // Very common for development/debugging
+
+		// High speeds
+		BAUD_230400 = 230400,   // High-speed applications
+		BAUD_250000 = 250000,   // 3D printers (Marlin firmware)
+		BAUD_460800 = 460800,   // Very high speed
+		BAUD_500000 = 500000,   // Some applications
+		BAUD_576000 = 576000,   // Less common
+		BAUD_921600 = 921600   // Maximum for many systems
+	};
+
 	class SerialAsync
 	{
 	public:

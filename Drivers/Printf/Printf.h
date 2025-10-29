@@ -43,7 +43,7 @@ extern "C"
 #endif
 
 #ifndef ASYNC_PRINTF
-	#define ASYNC_PRINTF	0
+	#define ASYNC_PRINTF	1
 #endif
 
 #if ASYNC_PRINTF

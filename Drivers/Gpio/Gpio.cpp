@@ -1,29 +1,22 @@
-/*
- * GpioBase.cpp
- *
- *  Created on: Apr 19, 2019
- *      Author: curiosul
- */
-
-#include "GpioBase.h"
+#include "Gpio.h"
 
 namespace Drivers
 {
-	GpioBase::GpioBase(uint8_t PinNo) :_PinNo(PinNo), _Mode(INPUT)
+	Gpio::Gpio(uint8_t PinNo) :_PinNo(PinNo), _Mode(INPUT)
 	{
 		Vfb_SetPinMode(this->_PinNo, this->_Mode);
 	}
 
-	GpioBase::GpioBase(uint8_t PinNo, uint8_t Mode) : _PinNo(PinNo), _Mode(Mode)
+	Gpio::Gpio(uint8_t PinNo, uint8_t Mode) : _PinNo(PinNo), _Mode(Mode)
 	{
 		Vfb_SetPinMode(this->_PinNo, this->_Mode);
 	}
 
-	GpioBase::~GpioBase()
+	Gpio::~Gpio()
 	{
 	}
 
-	void GpioBase::Set()
+	void Gpio::Set()
 	{
 			if(this->_Mode == INPUT)
 			{
@@ -45,7 +38,7 @@ namespace Drivers
 			Vfb_DigitalWrite(this->_PinNo, HIGH);
 	}
 
-	void GpioBase::Clear()
+	void Gpio::Clear()
 	{
 		if(this->_Mode == INPUT)
 		{
@@ -67,7 +60,7 @@ namespace Drivers
 		Vfb_DigitalWrite(this->_PinNo, LOW);
 	}
 
-	void GpioBase::Write(uint8_t LogicalLevel)
+	void Gpio::Write(uint8_t LogicalLevel)
 	{
 		if(this->_Mode == INPUT)
 		{
@@ -90,7 +83,7 @@ namespace Drivers
 		Vfb_DigitalWrite(this->_PinNo, LogicalLevel);
 	}
 
-	void GpioBase::Toggle()
+	void Gpio::Toggle()
 	{
 		if(this->_Mode == INPUT)
 		{
@@ -112,7 +105,7 @@ namespace Drivers
 		Vfb_DigitalToggle(this->_PinNo);
 	}
 
-	uint8_t GpioBase::Read()
+	uint8_t Gpio::Read()
 	{
 		if(this->_PinNo <= 0 )
 		{
@@ -124,7 +117,7 @@ namespace Drivers
 		return Vfb_DigitalRead(this->_PinNo);
 	}
 
-	uint16_t GpioBase::ReadAnalog()
+	uint16_t Gpio::ReadAnalog()
 	{
 		if(this->_PinNo <= 0 )
 		{
@@ -136,7 +129,7 @@ namespace Drivers
 		return (uint16_t)Vfb_AnalogRead(this->_PinNo);
 	}
 
-	uint8_t GpioBase::GetPinNo()
+	uint8_t Gpio::GetPinNo()
 	{
 		if(this->_PinNo <= 0 )
 		{
@@ -148,7 +141,7 @@ namespace Drivers
 		return this->_PinNo;
 	}
 
-	uint8_t GpioBase::GetPinMode()
+	uint8_t Gpio::GetPinMode()
 	{
 		if(this->_PinNo <= 0 )
 		{
