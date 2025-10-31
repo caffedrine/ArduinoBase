@@ -124,7 +124,7 @@ typedef struct
 	void *arg;
 } out_fct_wrap_type;
 
-#if ASYNC_PRINTF
+#if defined(ASYNC_PRINTF) && (ASYNC_PRINTF == 1)
 	#include <SerialAsync.h>
 
 	static Drivers::SerialAsync *serial;
@@ -134,7 +134,7 @@ typedef struct
 
 void printf_init(HardwareSerial *SerialPort, uint32_t BaudRate)
 {
-	#if ASYNC_PRINTF
+	#if defined(ASYNC_PRINTF) && (ASYNC_PRINTF == 1)
 		serial = new Drivers::SerialAsync(SerialPort, BaudRate);
 	#else
 		serial = SerialPort;
@@ -148,7 +148,7 @@ void _putchar(char character)
 {
 	if( serial )
 	{
-		#if ASYNC_PRINTF
+		#if defined(ASYNC_PRINTF) && (ASYNC_PRINTF == 1)
 			serial->WriteBytes((uint8_t *)&character, 1);
 		#else
 			serial->write(character);
@@ -156,7 +156,7 @@ void _putchar(char character)
 	}
 }
 
-#if ASYNC_PRINTF
+#if defined(ASYNC_PRINTF) && (ASYNC_PRINTF == 1)
 void printf_MainFunction()
 {
 	serial->MainFunction();

@@ -18,6 +18,16 @@ namespace Drivers
             TIMEOUT = 5
         };
 
+        typedef struct
+        {
+            bool _debounceEnabled = false;
+            uint8_t _debounceCount = 3;
+            float _thresholdTolerance = 1.0;
+
+            uint8_t _requiredConsecutive = 1.0;
+            float _lastStableDistance;
+        } debounce_data_t;
+
         // Callback function type for measurement notifications
         // Parameters: distance (cm), isValid (true if measurement successful)
         typedef void (*MeasurementCallback)(float distance, bool isValid);
@@ -30,6 +40,9 @@ namespace Drivers
         bool IsComplete();                 // Check if measurement done
         float GetDistanceCM();             // Get result in centimeters
         float GetDistanceInches();         // Get result in inches
+
+        // Set debouncing settings
+        void SetDebouncing(uint8_t consecutiveReadings = 3, float tolerance = 1.0);
 
         // Blocking measurement (for simple use)
         float MeasureDistanceCM();
@@ -65,6 +78,9 @@ namespace Drivers
         unsigned long _duration;
         float _distance;
         unsigned long _timeoutMs;
+
+        // Debouncing info
+        debounce_data_t _debounce_data;
 
         // Callback functionality
         MeasurementCallback _callback;

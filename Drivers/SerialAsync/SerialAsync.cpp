@@ -1,15 +1,4 @@
-/*
- * SerialAsync.cpp
- *
- *  Created on: Apr 19, 2019
- *      Author: curiosul
- */
-
 #include "SerialAsync.h"
-
-#ifndef SERIAL_ASYNC_DEBUG
-	#define SERIAL_ASYNC_DEBUG	0
-#endif
 
 namespace Drivers
 {

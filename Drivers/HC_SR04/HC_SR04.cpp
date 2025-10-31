@@ -222,9 +222,6 @@ namespace Drivers
 				{
 					_setState(STATE::TIMEOUT);
 					_handleMeasurementComplete(); // Handle timeout with callback
-#if DRIVERS_DEBUG == 1
-					ERR_PRINTLN("[ERR][HC_SR04] Timeout during measurement");
-#endif
 				}
 				break;
 
@@ -297,5 +294,13 @@ namespace Drivers
 			}
 		}
 	}
+
+	void HC_SR04::SetDebouncing(uint8_t consecutiveReadings, float tolerance)
+	{
+	    _debounce_data._debounceEnabled = consecutiveReadings > 0 ? true : false;
+	    _debounce_data._requiredConsecutive = (consecutiveReadings >= 1) ? consecutiveReadings : 1;
+	    _debounce_data._thresholdTolerance = tolerance;
+	}
+
 
 } /* namespace Drivers */

@@ -42,11 +42,7 @@ extern "C"
 {
 #endif
 
-#ifndef ASYNC_PRINTF
-	#define ASYNC_PRINTF	1
-#endif
-
-#if ASYNC_PRINTF
+#if defined(ASYNC_PRINTF) && (ASYNC_PRINTF == 1)
 	void printf_MainFunction();
 #endif
 

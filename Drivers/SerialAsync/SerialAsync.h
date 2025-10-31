@@ -1,21 +1,18 @@
-/*
- * SerialAsync.h
- *
- *  Created on: Apr 19, 2019
- *      Author: curiosul
- */
-
 #ifndef SERIAL_ASYNC_H
 #define SERIAL_ASYNC_H
 
 #include <Arduino.h>
-#include <Printf.h>
 
-#define SERIAL_ASYNC_STATIC_BUFFER_SIZE	1024u
+#ifndef SERIAL_ASYNC_STATIC_BUFFER_SIZE
+	#define SERIAL_ASYNC_STATIC_BUFFER_SIZE	1024u
+#endif
+
+#ifndef SERIAL_ASYNC_DEBUG
+	#define SERIAL_ASYNC_DEBUG	0
+#endif
 
 namespace Drivers
 {
-
 	enum class SerialSpeed : uint32_t
 	{
 		// Very slow speeds (legacy/debugging)
@@ -44,7 +41,7 @@ namespace Drivers
 		BAUD_460800 = 460800,   // Very high speed
 		BAUD_500000 = 500000,   // Some applications
 		BAUD_576000 = 576000,   // Less common
-		BAUD_921600 = 921600   // Maximum for many systems
+		BAUD_921600 = 921600    // Maximum for many systems
 	};
 
 	class SerialAsync
